@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<forms xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <systemform>
+    <formid>{05159bef-8f87-479e-8dd2-f36e08488baa}</formid>
+    <IntroducedVersion>1.0</IntroducedVersion>
+    <FormPresentation>1</FormPresentation>
+    <FormActivationState>1</FormActivationState>
+    <form>
+      <tabs>
+        <tab verticallayout="true" id="{ab1b47d8-8d71-4f26-a6d8-e31424a0721f}" IsUserDefined="1">
+          <labels>
+            <label description="General" languagecode="1033" />
+          </labels>
+          <columns>
+            <column width="100%">
+              <sections>
+                <section showlabel="false" showbar="false" IsUserDefined="0" id="{5a2a67f9-e2d1-489c-82c4-b3f8eec28332}">
+                  <labels>
+                    <label description="General" languagecode="1033" />
+                  </labels>
+                  <rows>
+                    <row>
+                      <cell id="{3cad90e4-edc3-4307-a7eb-909fb3f69c04}">
+                        <labels>
+                          <label description="Property Name" languagecode="1033" />
+                        </labels>
+                        <control id="almlab_propertyname" classid="{4273EDBD-AC1D-40d3-9FB2-095C621B552D}" datafieldname="almlab_propertyname" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{c8b82d36-ef46-4dc6-8220-87c7e0e35160}">
+                        <labels>
+                          <label description="Owner" languagecode="1033" />
+                        </labels>
+                        <control id="ownerid" classid="{270BD3DB-D9AF-4782-9025-509E298DEC0A}" datafieldname="ownerid" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{944e1000-1573-437a-b00f-9d280d413024}">
+                        <labels>
+                          <label description="Price" languagecode="1033" />
+                        </labels>
+                        <control id="almlab_price" classid="{533b9e00-756b-4312-95a0-dc888637ac78}" datafieldname="almlab_price" />
+                      </cell>
+                    </row>
+                  </rows>
+                </section>
+              </sections>
+            </column>
+          </columns>
+        </tab>
+      </tabs>
+    </form>
+    <IsCustomizable>1</IsCustomizable>
+    <CanBeDeleted>1</CanBeDeleted>
+    <LocalizedNames>
+      <LocalizedName description="Information" languagecode="1033" />
+    </LocalizedNames>
+    <Descriptions>
+      <Description description="A form for this entity." languagecode="1033" />
+    </Descriptions>
+  </systemform>
+</forms>

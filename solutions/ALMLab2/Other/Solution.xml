@@ -80,8 +80,19 @@
       </Addresses>
     </Publisher>
     <RootComponents>
-      <RootComponent type="300" schemaName="almlab_timeoffrequest_94c37" behavior="0" />
+      <RootComponent type="1" schemaName="almlab_properties" behavior="0" />
+      <RootComponent type="62" schemaName="almlab_modeldrivenapp" behavior="0" />
+      <RootComponent type="80" schemaName="almlab_modeldrivenapp" behavior="0" />
     </RootComponents>
-    <MissingDependencies />
+    <MissingDependencies>
+      <MissingDependency>
+        <Required type="61" schemaName="msdyn_/Images/AppModule_Default_Icon.png" displayName="msdyn_/Images/AppModule_Default_Icon.png" solution="AppModuleWebResources (2.5)" />
+        <Dependent type="80" schemaName="almlab_modeldrivenapp" displayName="modeldrivenapp" />
+      </MissingDependency>
+      <MissingDependency>
+        <Required type="SettingDefinition" displayName="AppChannel" solution="msdyn_AppFrameworkInfraExtensions (1.0.0.10)" id.uniquename="AppChannel" />
+        <Dependent type="AppSetting" displayName="parentappmoduleid.uniquename=almlab_modeldrivenapp,settingdefinitionid.uniquename=AppChannel" id.parentappmoduleid.uniquename="almlab_modeldrivenapp" id.settingdefinitionid.uniquename="AppChannel" />
+      </MissingDependency>
+    </MissingDependencies>
   </SolutionManifest>
 </ImportExportXml>

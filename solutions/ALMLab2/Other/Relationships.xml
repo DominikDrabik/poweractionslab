@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EntityRelationships xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <EntityRelationship Name="business_unit_almlab_properties" />
+  <EntityRelationship Name="lk_almlab_properties_createdby" />
+  <EntityRelationship Name="lk_almlab_properties_modifiedby" />
+  <EntityRelationship Name="owner_almlab_properties" />
+  <EntityRelationship Name="team_almlab_properties" />
+  <EntityRelationship Name="TransactionCurrency_almlab_properties" />
+  <EntityRelationship Name="user_almlab_properties" />
+</EntityRelationships>

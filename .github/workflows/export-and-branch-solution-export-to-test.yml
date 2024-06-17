@@ -28,6 +28,7 @@ env:
   ENVIRONMENT_URL: 'https://org25d2411c.crm4.dynamics.com'
   CLIENT_ID: 'e99c7897-4e86-4cbd-b6d8-000463eff1b3'
   TENANT_ID: '31625609-2aab-48ed-859d-9e16ef89acea'
+  BUILD_ENVIRONMENT_URL: 'https://org69172ed5.crm4.dynamics.com'
 permissions:
   contents: write
 jobs:
@@ -36,7 +37,9 @@ jobs:
     # or you can say runs-on: ubuntu-latest
     env:
       RUNNER_DEBUG: 1
-
+      ENVIRONMENT_URL: 'https://org25d2411c.crm4.dynamics.com'
+      CLIENT_ID: 'e99c7897-4e86-4cbd-b6d8-000463eff1b3'
+      TENANT_ID: '31625609-2aab-48ed-859d-9e16ef89acea'
     steps:
     - uses: actions/checkout@v2
       with:
@@ -80,24 +83,41 @@ jobs:
 
 
   convert-to-managed:
-      needs: [ export-from-dev ]
       runs-on: windows-latest
-      # or you can say runs-on: ubuntu-latest
+    # or you can say runs-on: ubuntu-latest
       env:
         RUNNER_DEBUG: 1
+        ENVIRONMENT_URL: 'https://org25d2411c.crm4.dynamics.com'
+        CLIENT_ID: 'e99c7897-4e86-4cbd-b6d8-000463eff1b3'
+        TENANT_ID: '31625609-2aab-48ed-859d-9e16ef89acea'
+        BUILD_ENVIRONMENT_URL: 'https://org69172ed5.crm4.dynamics.com'
   
       steps:
       - uses: actions/checkout@v2
         with:
           lfs: true
   
-      - name: Pack solution
-        uses: microsoft/powerplatform-actions/pack-solution@v0
+      - name: who-am-i action
+        uses: microsoft/powerplatform-actions/who-am-i@v0
         with:
-          solution-folder: ${{ inputs.solution_source_folder}}/${{ inputs.solution_name }}
-          solution-file: ${{ inputs.solution_outbound_folder}}/${{ inputs.solution_name }}.zip
-          solution-type: Unmanaged
+          environment-url: ${{env.ENVIRONMENT_URL}}
+          app-id: ${{env.CLIENT_ID}}
+          client-secret: ${{ secrets.PowerPlatformSPN }}
+          tenant-id: ${{env.TENANT_ID}}
   
+  
+      - name: export-solution action
+        uses: microsoft/powerplatform-actions/export-solution@v0
+        with:
+          BUILD_ENVIRONMENT_URL: 'https://org69172ed5.crm4.dynamics.com'
+          environment-url: ${{env.ENVIRONMENT_URL}}
+          app-id: ${{env.CLIENT_ID}}
+          client-secret: ${{ secrets.PowerPlatformSPN }}
+          tenant-id: ${{env.TENANT_ID}}
+          
+          solution-name: ${{ github.event.inputs.solution_name }}
+          solution-output-file: ${{ github.event.inputs.solution_exported_folder}}/${{ github.event.inputs.solution_name }}.zip
+    
       - name: Import solution as unmanaged to build env
         uses: microsoft/powerplatform-actions/import-solution@v0
         with:
@@ -105,7 +125,8 @@ jobs:
           app-id: ${{inputs.CLIENT_ID}}
           client-secret: ${{ secrets.envSecret }}
           tenant-id: ${{inputs.TENANT_ID}}
-          solution-file: ${{ inputs.solution_outbound_folder}}/${{ inputs.solution_name }}.zip
+          
+          solution-file: ${{ github.event.inputs.solution_exported_folder }}/${{ github.event.inputs.solution_name }}.zip
           force-overwrite: true
           publish-changes: true
   

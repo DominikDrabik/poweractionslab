@@ -80,6 +80,7 @@ jobs:
 
 
   convert-to-managed:
+      needs: [ convert-to-managed ]
       runs-on: windows-latest
       # or you can say runs-on: ubuntu-latest
       env:

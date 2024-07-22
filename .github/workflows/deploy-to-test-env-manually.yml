@@ -8,7 +8,7 @@ permissions:
 
 jobs:
   Release-solution-ALMLab:
-    uses: ./.github/workflows/deloy-to-test-env.yml
+    uses: ./.github/workflows/deploy-to-test-env.yml
     with:
       #You can specify the solution name here
       solution_name: ALMLab2

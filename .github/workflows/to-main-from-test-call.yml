@@ -1,4 +1,4 @@
-name: import-to-main-branch
+name: to-main-from-test-call
 
 on:
   workflow_dispatch
